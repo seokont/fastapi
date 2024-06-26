@@ -1,0 +1,480 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Blog API",
+    "version": "1.0.0",
+    "description": "API for managing posts, authors, tags, and categories"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/authors": {
+      "get": {
+        "summary": "Get all authors",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Author"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new author",
+        "parameters": [
+          {
+            "name": "author",
+            "in": "body",
+            "description": "Author to create",
+            "schema": {
+              "$ref": "#/definitions/NewAuthor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      }
+    },
+    "/authors/{id}": {
+      "put": {
+        "summary": "Update an author",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "author",
+            "in": "body",
+            "description": "Author to update",
+            "schema": {
+              "$ref": "#/definitions/NewAuthor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an author",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+        "summary": "Get all posts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new post",
+        "parameters": [
+          {
+            "name": "post",
+            "in": "body",
+            "description": "Post to create",
+            "schema": {
+              "$ref": "#/definitions/NewPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          }
+        }
+      }
+    },
+    "/posts/{id}": {
+      "put": {
+        "summary": "Update a post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "post",
+            "in": "body",
+            "description": "Post to update",
+            "schema": {
+              "$ref": "#/definitions/NewPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "summary": "Get all tags",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tag"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new tag",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "body",
+            "description": "Tag to create",
+            "schema": {
+              "$ref": "#/definitions/NewTag"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        }
+      }
+    },
+    "/tags/{id}": {
+      "put": {
+        "summary": "Update a tag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "body",
+            "description": "Tag to update",
+            "schema": {
+              "$ref": "#/definitions/NewTag"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a tag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "summary": "Get all categories",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new category",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category to create",
+            "schema": {
+              "$ref": "#/definitions/NewCategory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "put": {
+        "summary": "Update a category",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category to update",
+            "schema": {
+              "$ref": "#/definitions/NewCategory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a category",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Author": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "NewAuthor": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "categories_id": {
+          "type": "string"
+        },
+        "author_id": {
+          "type": "string"
+        }
+      }
+    },
+    "NewPost": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "categories_id": {
+          "type": "string"
+        },
+        "author_id": {
+          "type": "string"
+        }
+      },
+      "required": ["title", "text"]
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "post_id": {
+          "type": "string"
+        }
+      }
+    },
+    "NewTag": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "string"
+        },
+        "post_id": {
+          "type": "string"
+        }
+      },
+      "required": ["tag"]
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "NewCategory": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": ["title"]
+    }
+  
+  }
+}
